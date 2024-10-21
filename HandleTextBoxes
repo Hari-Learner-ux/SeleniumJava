@@ -13,7 +13,7 @@ textbox display or not
  copy text or get text
   */
 
-public class WorkonTextElements 
+public class HandleTextBoxes 
 {
 WebDriver driver;
 
@@ -44,7 +44,7 @@ public static void main (String[] args) throws InterruptedException
 			//For clearing entered text
 			usernameTXT.clear();
 			
-			usernameTXT.sendKeys("hari.taraka.prabhu");
+			usernameTXT.sendKeys("Hari-Learner-ux");
 			String enterednewText=usernameTXT.getAttribute("value"); 
 			System.out.println(enterednewText);
 			Thread.sleep(3000);
@@ -56,3 +56,4 @@ public static void main (String[] args) throws InterruptedException
 }
 
 }
+
