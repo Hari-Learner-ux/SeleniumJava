@@ -1,0 +1,61 @@
+package test_scenarios;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class HandleTextBoxesMethods 
+{
+static WebDriver driver;
+
+@Test
+public static void EmailBox() throws InterruptedException
+{
+	WebDriver driver = new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.get("https://www.facebook.com/login.php/");
+	Thread.sleep(3000);
+	
+	WebElement EmailText = driver.findElement(By.id("email"));
+	
+	if(EmailText.isDisplayed())
+			{
+			if(EmailText.isEnabled())
+			{
+				EmailText.sendKeys("prabhu.manyam1@gmail.com");
+				String Entered = EmailText.getAttribute("value");
+				System.out.println("Email address is : "+Entered);
+				Thread.sleep(2000);
+			}
+			}
+	else
+	{
+		System.err.println("Email Text box not found");
+	}
+	
+	
+WebElement PasswordText = driver.findElement(By.name("pass"));
+	
+	if(PasswordText.isDisplayed())
+			{
+			if(PasswordText.isEnabled())
+			{
+				PasswordText.sendKeys("System123");
+				String PwdEntered = PasswordText.getAttribute("value");
+				System.out.println("Password is : "+PwdEntered);
+				Thread.sleep(2000);
+			}
+			}
+	else
+	{
+		System.err.println("Password Text box not found");
+	}
+	
+	EmailText.clear();
+	PasswordText.clear();
+}
+
+
+}
