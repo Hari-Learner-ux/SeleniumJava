@@ -1,0 +1,58 @@
+package test_scenarios;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+/*
+textbox display or not
+ enable or not
+ enter text
+ clear text
+ copy text or get text
+  */
+
+public class WorkonTextElements 
+{
+WebDriver driver;
+
+public static void main (String[] args) throws InterruptedException
+{
+	WebDriver driver = new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.get("https://github.com/login");
+	Thread.sleep(3000);
+	
+	//adding total reference into webelement reference(usernametxt),we can use multiple times
+	WebElement usernameTXT = driver.findElement(By.id("login_field"));   
+	
+	if(usernameTXT.isDisplayed())		//checking element display or not , by using "ISDISPLAYED", ISDISPLAYED will give boolean values (True or False)
+	{
+		if(usernameTXT.isEnabled())		//checking element elabled or not , by using "ISENABLED", ISENABLED will give boolean values (True or False)
+		{
+			//For entering Text in textbox, by using "SENDKEYS",
+			//It will not clear new text, it will append new text
+			usernameTXT.sendKeys("manyam grithik nandhan");		
+			
+			//For getting text from textbox, text will store in internal value, so we are using getAttribute, we cannot user gettext(), it will use for labels.
+			String enteredText=usernameTXT.getAttribute("value"); 
+			System.out.println(enteredText);
+			Thread.sleep(3000);
+			
+						
+			//For clearing entered text
+			usernameTXT.clear();
+			
+			usernameTXT.sendKeys("hari.taraka.prabhu");
+			String enterednewText=usernameTXT.getAttribute("value"); 
+			System.out.println(enterednewText);
+			Thread.sleep(3000);
+		}
+	}
+	else
+		System.err.println("username textbox is not displayed"); //printing error message
+	//
+}
+
+}
